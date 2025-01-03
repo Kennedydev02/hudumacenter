@@ -26,12 +26,12 @@ jobs:
           npm install
           npm run build
 
-      # Copy the fly.toml and Dockerfile to dist
-      - name: Copy fly.toml and Dockerfile to dist
+      # Copy the fly.toml and Dockerfile to build
+      - name: Copy fly.toml and Dockerfile to build
         run: |
-          cp fly.toml dist/
-          cp Dockerfile dist/
-          cp nginx.conf dist/
+          cp fly.toml build/
+          cp Dockerfile build/
+          cp nginx.conf build/
 
 
       # Deploy to Fly.io
@@ -42,4 +42,4 @@ jobs:
           curl -L https://fly.io/install.sh | sh
           export PATH="$HOME/.fly/bin:$PATH"
           fly auth token $FLY_API_TOKEN
-          fly deploy ./dist --config fly.toml  # Deploy only the 'dist' folder
+          fly deploy ./build --config fly.toml  # Deploy only the 'build' folder
