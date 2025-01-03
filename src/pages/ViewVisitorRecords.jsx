@@ -44,7 +44,7 @@ function ViewVisitorRecords() {
       id: 1,
       date: '2023-12-20',
       time: '09:00 AM',
-      name: 'John Doe',
+      name: 'Kennedy Gichobi',
       email: 'john.doe@example.com',
       phone: '0712345678',
       purpose: 'ID Application',
