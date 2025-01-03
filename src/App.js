@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import AddVisitorPage from './pages/AddVisitorPage';
 import ViewVisitorRecords from './pages/ViewVisitorRecords';
 import VisitorRecordsPage from './pages/VisitorRecordsPage';
+import TasksPage from './pages/TasksPage';
 
 function App() {
   const location = useLocation();
@@ -15,7 +16,8 @@ function App() {
   const navItems = [
     { label: 'Dashboard', path: '/' },
     { label: 'Add Visitor', path: '/add-visitor' },
-    { label: 'View Records', path: '/view-records' }
+    { label: 'View Records', path: '/view-records' },
+    { label: 'Tasks', path: '/tasks' }
   ];
 
   return (
@@ -24,19 +26,19 @@ function App() {
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         {/* Sticky Header */}
         <AppBar 
-          position="sticky" // Changed from "static" to "sticky"
-          elevation={2} // Added slight elevation for better visibility
+          position="sticky"
+          elevation={2}
           sx={{ 
             background: 'linear-gradient(90deg, #0B6623 0%, #1e4d8a 100%)',
-            zIndex: (theme) => theme.zIndex.drawer + 1, // Ensures navbar stays above other content
+            zIndex: (theme) => theme.zIndex.drawer + 1,
           }}
         >
           <Toolbar sx={{ 
             justifyContent: 'space-between',
             px: { xs: 2, sm: 4 },
             py: 1,
-            transition: 'all 0.3s ease', // Smooth transition for any changes
-            backdropFilter: 'blur(8px)', // Adds a blur effect when scrolling
+            transition: 'all 0.3s ease',
+            backdropFilter: 'blur(8px)',
           }}>
             {/* Logo/Title */}
             <Typography 
@@ -71,6 +73,8 @@ function App() {
                     color: 'white',
                     opacity: location.pathname === item.path ? 1 : 0.8,
                     position: 'relative',
+                    textTransform: 'none',
+                    fontSize: '1rem',
                     '&:after': {
                       content: '""',
                       position: 'absolute',
@@ -84,6 +88,7 @@ function App() {
                     },
                     '&:hover': {
                       opacity: 1,
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
                       '&:after': {
                         transform: 'scaleX(1)'
                       }
@@ -97,7 +102,7 @@ function App() {
           </Toolbar>
         </AppBar>
 
-        {/* Main Content - Added padding-top to prevent content from going under navbar */}
+        {/* Main Content */}
         <Box 
           component="main" 
           sx={{ 
@@ -111,6 +116,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/add-visitor" element={<AddVisitorPage />} />
             <Route path="/view-records" element={<ViewVisitorRecords />} />
+            <Route path="/tasks" element={<TasksPage />} />
             <Route path="/visitor-records" element={<VisitorRecordsPage />} />
           </Routes>
         </Box>
